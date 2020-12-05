@@ -1,1 +1,1 @@
-web: gunicorn inobooks.wsgi
+web: gunicorn inobooks.wsgi --log-file -
