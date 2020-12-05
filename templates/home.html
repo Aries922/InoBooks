@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home {% endblock title %}
+{% block body %}
+{% for book in allbooks %}
+<div class="container  my-3" id="books" style=" width: 50rem; background-color: #ffffff; border-radius: 25px;
+  border: 2px solid #ffffff;box-shadow: 10px 10px 5px grey;">
+  <div class="row">
+    <img src="{{ book.img.url}}" style="width: 20%; border-radius:25px">
+    <div class="card-body col-md-8">
+      <h2 class="card-title">{{ book.name }}</h2>
+      <p class="card-text">{{ book.Description }}</p>
+        <h6 class="d-inline-block mb-2 text-muted">by {{book.author}}</h6>
+         <div class="mb-1 text-muted">{{book.date}}</div>
+        <a href='{{ book.pdf.url }}' class="btn " style="background-color: #8C55AA; color: black"><i class="fa fa-download"></i> Download</a>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-black" data-toggle="modal" data-target="#exampleModal">
+ <i class="fas fa-bug"></i> Report
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+    <form action="bookreport" method="POST" enctype="multipart/form-data">
+
+
+      <input class="form-control" id="comment" name="comment" rows="3" name="comment"></input>
+
+    <input type="hidden" name="postid" value="{{ allbooks.name }}">
+        {% csrf_token %}
+        <button type="submit" class="btn " style="margin-left: 42% ;margin-top: 2%;background-color: #8C55AA">
+  Report
+</button>
+    </form>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+{% endfor %}
+
+
+<footer class="page-footer font-small Black pt-4" style="background-color: rebeccapurple">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3" style="color: black">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">InoBooks</h5>
+        <p>Here you can Download Ebooks in free.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3" style="color: black">
+
+        <!-- Links -->
+        <h5 class="text">Contact Us</h5>
+
+         <ul class="list-unstyled">
+            <h6 class="text">kumarsingha922@gmail.com</h6>
+            <h6 class="text">+91 9354692256</h6>
+
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3" style="color: black">
+
+        <!-- Links -->
+        <h4 class="text">Partners</h4>
+
+        <ul class="list-unstyled">
+            <h6 class="text">Amit Kumar Singh</h6>
+            <h6 class="text">Ayushman</h6>
+            <h6 class="text">Aryan</h6>
+            <h6 class="text">Ashu Goyal</h6>
+
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="color: black">© 2020 Copyright:
+    <a href="aboutus" style=" color: black"> InoBooks.com About us</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+{% endblock body %}
+
+
+
+
+
+

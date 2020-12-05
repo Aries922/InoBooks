@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/50a056e729.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #8C55AA" >
+        <a class="navbar-brand col-md-4" href="/">
+            InoBooks
+        </a>
+
+        <form class="form-inline col-md-4">
+            <input class="form-control rounded-pill " type="search" placeholder="Search" aria-label="Search"
+                id="searchbox" style="width:70%;">
+            <button type="button" class="btn " id="searchbtn"><i class="fas fa-search" ></i></button>
+        </form>
+
+
+
+
+
+        <ul class="navbar-nav col-md-4 justify-content-end">
+            <li class="nav-item active">
+                <a class="nav-link " href="upload"><i class="fas fa-cloud-upload-alt  mx-1"></i>Upload <span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="donate"> <i class="fas fa-donate mx-1"></i>Donate<span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav " >
+                    <a class="nav-link " href="/logout"style="color: black" >
+                        Hey {{request.user}} Logout
+                    </a>
+
+            </ul>
+
+
+
+            {% else %}
+            <!-- Button to trigger Login modal -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/singup">SignIn/SignUp<span class="sr-only">(current)</span></a>
+            </li>
+
+            {% endif %}
+        </ul>
+    </nav>
+
+
+<div class="container col-md-8">
+<form action="handleupload" method="POST" enctype="multipart/form-data">
+    <div class="form-group " style="margin-top: 10px">
+      <label for="name">Book Name</label>
+      <input type="text" class="form-control" id="name" name="name" >
+    </div>
+    <div class="form-group " >
+      <label for="author">Author Name</label>
+      <input type="text" class="form-control" id="author" name="author" >
+    </div>
+    <div class="form-group">
+      <label for="Description">Description</label>
+      <textarea class="form-control" id="Description" name="description" rows="3" name="description"></textarea>
+    </div>
+    <div class="row">
+  <div class="form-group col-sm">
+    <label for="Selectbook">Select Book</label>
+    <input type="file" class="form-control-file" id="selectbook" name="selectbook">
+  </div>
+
+        </div>
+<div class="form-group">
+  <label for="thumbinal">Thumbinals</label>
+  <input type="file" class="form-control-file" id="thumbinal" name="thumbinal">
+</div>
+<div class="button">
+  {% csrf_token %}
+<button type="submit" class="btn btn-outline btn-sm my-3" style="background-color: #8C55AA">Upload</button>
+
+</div>
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

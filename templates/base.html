@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/50a056e729.js" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body style="background-color: #F3EBF6">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8C55AA">
+        <a class="navbar-brand col-md-4" href="/">
+            InoBooks
+        </a>
+
+        <form  method="get" action="/search" class="form-inline col-md-4">
+            <input class="form-control rounded-pill " type="search" placeholder="Search" aria-label="Search" name="query" id="query"
+                id="searchbox" style="width:70%;">
+            <button type="submit" class="btn " ><i class="fas fa-search" ></i></button>
+        </form>
+
+
+
+
+
+        <ul class="navbar-nav col-md-4 justify-content-end">
+            <li class="nav-item active">
+                <a class="nav-link " href="upload"><i class="fas fa-cloud-upload-alt  mx-1"></i>Upload <span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="donate"> <i class="fas fa-donate mx-1"></i>Donate<span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav " >
+                    <a class="nav-link " href="/logout"style="color: black" >
+                        Hey {{request.user}} Logout
+                    </a>
+
+            </ul>
+
+
+
+            {% else %}
+            <!-- Button to trigger Login modal -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/singup">SignIn/SignUp<span class="sr-only">(current)</span></a>
+            </li>
+
+            {% endif %}
+        </ul>
+    </nav>
+
+{% for message in messages %}
+    <div id="myAlert" class="alert alert-{{ message.tags }}" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Success! </strong> {{ message }}
+</div>
+{% endfor %}
+
+  {% block body %}   {% endblock body %}
+<!-- Footer -->
+
+<!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{#<script type="text/javascript">window.setTimeout(function() {$(".alert").fadeTo(500, 0).slideUp(500, function(){$(this).remove();#}
+{#    });}, 2000);</script>#}
+</body>
+</html>
+

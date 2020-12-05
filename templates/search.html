@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home {% endblock title %}
+{% block body %}
+    <div class="container my-3">
+    <h2>Search Results by InoBooks:</h2>
+    
+    {% for book in allsearch %}
+<div class="container  my-3" id="books" style=" width: 50rem; background-color: #ffffff; border-radius: 25px;
+  border: 2px solid #ffffff;box-shadow: 10px 10px 5px grey;">
+  <div class="row">
+    <img src="{{ book.img.url}}" style="
+    width: 20%; border-radius:25px">
+    <div class="card-body col-md-8">
+      <h5 class="card-title">{{ book.name }}</h5>
+      <p class="card-text">{{ book.Description }}</p>
+        <a href='{{ book.pdf.url }}' class="btn btn" style="background-color: #8C55AA ;color: black "><i class="fa fa-download "> </i> Download</a>
+    </div>
+  </div>
+  </div>
+    </div>
+    {% endfor %}
+{% endblock body %}

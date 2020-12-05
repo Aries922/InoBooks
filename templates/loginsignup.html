@@ -1,0 +1,35 @@
+
+{% load static %}
+
+
+
+
+    <head>
+  <link rel="stylesheet" href="../static/styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div class="main" style="height: 645px; width: 500px; margin:2em auto;">
+    <p class="sign" align="center">Register New Account</p>
+    <form class="form1" action="handlesignup" method="POST">
+      <input class="username" for="username" id="username" name="username" type="text" align="center" placeholder="Username">
+      <input class="fname" id="fname" name="fname"type="text" align="center" placeholder="First Name">
+      <input class="lname" id="lname" name="lname" type="text" align="center" placeholder="Last Name">
+      <input class="email" id="email" name="email" type="email" align="center" placeholder="Email">
+      <input class="password" id="password" name="password" type="password" align="center" placeholder="Password">
+      <input class="repassword" id="repassword" name="repassword" type="password" align="center" placeholder="Again Password">
+        {% csrf_token %}
+      <button class="submit" align="center" >Sign Up</button>
+    </form>
+       <div align="center" style="margin: 1em "> <text>Already have an Account </text><a href="login">SignIn</a></div>
+
+      </div>
+
+
+
+
+

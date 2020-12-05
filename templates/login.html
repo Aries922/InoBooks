@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<head>
+  <link rel="stylesheet" href="../static/styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Sign in</title>
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign" align="center">Sign in</p>
+    <form class="form1" action="handlelogin" method="post">
+      <input class="username " id="loginusername" name="loginusername" type="text" align="center" placeholder="Username">
+      <input class="password" id="loginpassword" name="loginpassword" type="password" align="center" placeholder="Password">
+        {% csrf_token %}
+      <button class="submit" align="center" >Sign in</button>
+    </form>
+      <p class="forgot" align="center" ><a href="#">Forgot Password?</p>
+                
+      </div>
+     
+<body>
+{% endblock body %}
+
+
